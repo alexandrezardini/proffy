@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from 'react';
 
 import PageHeader from '../../components/PageHeader';
-import TeacherItem, {Teacher} from '../../components/TeacherItem';
+import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
 
@@ -9,10 +9,7 @@ import './styles.css';
 import api from '../../services/api';
 
 function TeacherList() {
-
-  
-
-  const [teachers, setTeachers] = useState([])
+  const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState('');
   const [week_day, setWeekDay] = useState('');
   const [time, setTime] = useState('');
@@ -23,9 +20,7 @@ function TeacherList() {
       params: { subject, week_day, time }
     });
 
-    console.log(response.data)
-
-    setTeachers(response.data)
+    setTeachers(response.data);
   }
   return (
     <div id='page-teacher-list' className='container'>
@@ -73,7 +68,9 @@ function TeacherList() {
       </PageHeader>
 
       <main>
-        {teachers.map((teacher: Teacher) => <TeacherItem key={teacher.id} teacher={teacher}/>)}
+        {teachers.map((teacher: Teacher) => (
+          <TeacherItem key={teacher.id} teacher={teacher} />
+        ))}
       </main>
     </div>
   );
