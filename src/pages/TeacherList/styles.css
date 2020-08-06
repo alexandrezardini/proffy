@@ -1,6 +1,8 @@
 #page-teacher-list {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #search-teachers {
@@ -28,7 +30,7 @@
   margin-top: 3.2rem;
 }
 
-#search-teachers button:hover{
+#search-teachers button:hover {
   background: var(--color-secundary-dark);
 }
 
@@ -36,6 +38,21 @@
 #page-teacher-list main {
   margin: 3.2rem auto;
   width: 90%;
+}
+
+#page-teacher-list .empty-search{
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+#page-teacher-list .title-empty-list {
+  text-align: center;
+  font-size: 2.2rem;
+  max-width: 30rem;
+  font-weight: 500;
+  font-family: Archivo;
+  color: var(--color-text-complement);
 }
 
 @media (min-width: 700px) {

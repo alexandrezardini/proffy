@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, FormEvent} from 'react';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
@@ -9,6 +9,7 @@ import './styles.css';
 import api from '../../services/api';
 
 function TeacherList() {
+  const [search, setSerch] = useState(['a']);
   const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState('');
   const [week_day, setWeekDay] = useState('');
@@ -21,7 +22,31 @@ function TeacherList() {
     });
 
     setTeachers(response.data);
+    setSerch(teachers);
   }
+
+  function checkSeachState() {
+    if (search.includes('a')) {
+      return (
+        <div className='empty-search'>
+          <h1 className='title-empty-list'>Preecha todos os campos para pesquisa</h1>
+        </div>
+      );
+    } else if (teachers.length > 0) {
+      return teachers.map((teacher: Teacher) => (
+        <TeacherItem key={teacher.id} teacher={teacher} />
+      ));
+    }
+
+    return (
+      <div className='empty-search'>
+        <h1 className='title-empty-list'>
+          Nenhum professor encontrado com sua pesquisa.
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <div id='page-teacher-list' className='container'>
       <PageHeader title='Estes são os Proffys disponíveis'>
@@ -67,11 +92,7 @@ function TeacherList() {
         </form>
       </PageHeader>
 
-      <main>
-        {teachers.map((teacher: Teacher) => (
-          <TeacherItem key={teacher.id} teacher={teacher} />
-        ))}
-      </main>
+      <main>{checkSeachState()}</main>
     </div>
   );
 }
