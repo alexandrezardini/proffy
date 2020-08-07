@@ -67,6 +67,7 @@ function TeacherForm() {
       <PageHeader
         title='Que incrível que você quer dar aulas'
         description='Primeiro passo é preencher o formulário de inscrição'
+        pageName='Dar aulas'
       />
       <main>
         <form onSubmit={handelCreateClass}>

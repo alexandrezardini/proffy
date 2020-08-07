@@ -8,11 +8,13 @@ import './styles.css';
 
 interface PageHeaderProps {
   title: string;
+  pageName: string;
   description?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
+  pageName,
   description,
   children
 }) => {
@@ -22,6 +24,7 @@ const PageHeader: React.FC<PageHeaderProps> = ({
         <Link to='/'>
           <img src={backIcon} alt='Voltar' />
         </Link>
+        <h2>{pageName}</h2>
         <img src={logoImg} alt='Proffy' />
       </div>
       <div className='header-content'>
