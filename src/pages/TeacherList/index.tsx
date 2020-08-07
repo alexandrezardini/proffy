@@ -9,7 +9,7 @@ import './styles.css';
 import api from '../../services/api';
 
 function TeacherList() {
-  const [search, setSerch] = useState(['a']);
+  const [searchMessage, setSearchMessage] = useState('Selecione a matéria e quando deseja estudar.');
   const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState('');
   const [week_day, setWeekDay] = useState('');
@@ -17,35 +17,19 @@ function TeacherList() {
 
   async function searchTeachers(e: FormEvent) {
     e.preventDefault();
-    const response = await api.get('classes', {
-      params: { subject, week_day, time }
-    });
+    try {
+      const response = await api.get('classes', {
+        params: { subject, week_day, time }
+      });
 
-    setTeachers(response.data);
-    setSerch(teachers);
-  }
+      setTeachers(response.data);
+      setSearchMessage('Nenhum professor encontrado com sua pesquisa.');
 
-  function checkSeachState() {
-    if (search.includes('a')) {
-      return (
-        <div className='empty-search'>
-          <h1 className='title-empty-list'>Preencha todos os campos para pesquisar</h1>
-        </div>
-      );
-    } else if (teachers.length > 0) {
-      return teachers.map((teacher: Teacher) => (
-        <TeacherItem key={teacher.id} teacher={teacher} />
-      ));
+    } catch (e) {
+      setSearchMessage('Preencha todos os campos para pesquisar.')
     }
-
-    return (
-      <div className='empty-search'>
-        <h1 className='title-empty-list'>
-          Nenhum professor encontrado com sua pesquisa.
-        </h1>
-      </div>
-    );
   }
+
 
   return (
     <div id='page-teacher-list' className='container'>
@@ -92,7 +76,17 @@ function TeacherList() {
         </form>
       </PageHeader>
 
-      <main>{checkSeachState()}</main>
+      <main>
+        {teachers.length === 0 ? (
+          <div className='empty-search'>
+            <h1 className='title-empty-list'>{searchMessage}</h1>
+          </div>
+        ) : (
+          teachers.map((teacher: Teacher) => (
+            <TeacherItem key={teacher.id} teacher={teacher} />
+          ))
+        )}
+      </main>
     </div>
   );
 }
