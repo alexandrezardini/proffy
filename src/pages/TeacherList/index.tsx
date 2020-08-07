@@ -29,7 +29,7 @@ function TeacherList() {
     if (search.includes('a')) {
       return (
         <div className='empty-search'>
-          <h1 className='title-empty-list'>Preecha todos os campos para pesquisa</h1>
+          <h1 className='title-empty-list'>Preencha todos os campos para pesquisar</h1>
         </div>
       );
     } else if (teachers.length > 0) {
