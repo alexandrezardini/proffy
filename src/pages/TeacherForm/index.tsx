@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import warningIcon from '../../assets/images/icons/warning.svg';
 import Textarea from '../../components/Textarea';
 import Select from '../../components/Select';
+import rocketIcon from '../../assets/images/icons/rocket.svg'
 
 import './styles.css';
 import api from '../../services/api';
@@ -68,6 +69,8 @@ function TeacherForm() {
         title='Que incrível que você quer dar aulas'
         description='Primeiro passo é preencher o formulário de inscrição'
         pageName='Dar aulas'
+        // iconLeft={rocketIcon} 
+        // textRight={`Prepare-se! vai ser o máximo`}
       />
       <main>
         <form onSubmit={handelCreateClass}>

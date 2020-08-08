@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactSVG } from 'react';
 import { Link } from 'react-router-dom';
 
 import logoImg from '../../assets/images/logo.svg';
@@ -10,12 +10,16 @@ interface PageHeaderProps {
   title: string;
   pageName: string;
   description?: string;
+  iconLeft?: string;
+  textRight?: string;
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({
   title,
   pageName,
   description,
+  iconLeft,
+  textRight,
   children
 }) => {
   return (
@@ -29,7 +33,12 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
       <div className='header-content'>
         <strong>{title}</strong>
+        <div className='content-right'>
         {description && <p>{description}</p>}
+          <img src={iconLeft} alt='icon' />
+          <h2 className='text-right'>{textRight}</h2>
+        </div>
+        
         {children}
       </div>
     </header>

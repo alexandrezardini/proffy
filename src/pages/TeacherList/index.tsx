@@ -1,14 +1,16 @@
-import React, { useState, FormEvent} from 'react';
+import React, { useState, FormEvent, useEffect} from 'react';
 
 import PageHeader from '../../components/PageHeader';
 import TeacherItem, { Teacher } from '../../components/TeacherItem';
 import Input from '../../components/Input';
 import Select from '../../components/Select';
+import smileIcon from '../../assets/images/icons/smile.svg'
 
 import './styles.css';
 import api from '../../services/api';
 
 function TeacherList() {
+  const[totalTeachers, setTotalTeachers] = useState({})
   const [searchMessage, setSearchMessage] = useState('Selecione a matéria e quando deseja estudar.');
   const [teachers, setTeachers] = useState([]);
   const [subject, setSubject] = useState('');
@@ -30,10 +32,23 @@ function TeacherList() {
     }
   }
 
+  useEffect(() => {
+    try{
+     api.get('teachers').then(response => setTotalTeachers(response.data.total))
+
+      
+    } catch(e) {
+      console.log('erro ao carregar')
+    }
+  },[])
 
   return (
     <div id='page-teacher-list' className='container'>
-      <PageHeader title='Estes são os Proffys disponíveis' pageName='Estudar'>
+      <PageHeader 
+        title='Estes são os Proffys disponíveis' 
+        pageName='Estudar' 
+        iconLeft={smileIcon} 
+        textRight={`Nós temos ${totalTeachers} professores`}>
         <form id='search-teachers' onSubmit={searchTeachers}>
           <Select
             name='subject'
