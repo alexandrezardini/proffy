@@ -13,7 +13,7 @@
     justify-content: space-around;
     align-items: center;
     color: var(--color-text-in-primary);
-    padding: 1.6rem 0;
+    padding: 1.6rem 0
 }
 
 .header-content {
@@ -40,12 +40,16 @@
     height: 1.6rem;
 }
 
+.middle-content {
+    width: 60rem;
+    background-color: blue;
+}
+
 .content-right {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-left: 20rem;
 }
 
 .content-right img {
@@ -78,6 +82,11 @@
 @media (min-width: 700px){
     .page-header{
         height: 340px;
+    }
+
+    .content-right {
+        margin-left: 15rem;
+        line-height: 3rem;
     }
     
     .page-header .header-content {

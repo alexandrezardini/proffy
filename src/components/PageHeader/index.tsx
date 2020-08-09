@@ -33,12 +33,15 @@ const PageHeader: React.FC<PageHeaderProps> = ({
       </div>
       <div className='header-content'>
         <strong>{title}</strong>
-        <div className='content-right'>
-        {description && <p>{description}</p>}
-          <img src={iconLeft} alt='icon' />
-          <h2 className='text-right'>{textRight}</h2>
-        </div>
         
+          {description && <p>{description}</p>}
+          <div className='content-right'>
+            <img src={iconLeft} alt='icon' />
+            <p className='text-right'>{textRight}</p>
+         
+
+        </div>
+
         {children}
       </div>
     </header>

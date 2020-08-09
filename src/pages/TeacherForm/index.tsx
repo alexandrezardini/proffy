@@ -57,8 +57,7 @@ function TeacherForm() {
         schedule: scheduleItems
       })
       .then(() => {
-        alert('Cadastro realizado com sucesso');
-        history.push('/');
+        history.push('form-success');
       })
       .catch((e: any) => console.log(e, 'ocorreu um erro'));
   }
@@ -67,10 +66,10 @@ function TeacherForm() {
     <div id='page-teacher-form' className='container'>
       <PageHeader
         title='Que incrível que você quer dar aulas'
-        description='Primeiro passo é preencher o formulário de inscrição'
         pageName='Dar aulas'
-        // iconLeft={rocketIcon} 
-        // textRight={`Prepare-se! vai ser o máximo`}
+        iconLeft={rocketIcon} 
+        textRight={`Prepare-se! vai ser o máximo`}
+        
       />
       <main>
         <form onSubmit={handelCreateClass}>
