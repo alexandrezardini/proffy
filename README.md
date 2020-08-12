@@ -1,6 +1,6 @@
 <h1 align="center">
 <br>
-  <img src="./github/logo.svg" alt="Proffy" width="200">
+  <img src="./github/logo.png" alt="Proffy" width="200">
 <br>
 </h1>
 
