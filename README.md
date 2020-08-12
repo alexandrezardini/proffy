@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <h1 align="center">
 <br>
   <img src="./github/logo.svg" alt="Proffy" width="200">
@@ -40,6 +39,3 @@ This project was developed with the following technologies:
 
 
 Made with 💜 by Alexndre Roa 👋 [See my linkedin](https://www.linkedin.com/in/azaroa/)
-=======
-To aplication backend = https://github.com/alexandre-roa/proffy-backend
->>>>>>> a75c2709e84b2c5295e1c8c6070d6509bccd862e
